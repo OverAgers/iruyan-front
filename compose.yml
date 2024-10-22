@@ -3,16 +3,10 @@ services:
     build:
       context: .
     ports:
-      - "12000:3000"
+      - "3000:3000"  # 開発ポート3000をマッピング
     volumes:
       - .:/app
-      - node_modules:/app/node_modules
-    command: sh -c "yarn dev"
+      - /app/node_modules  # node_modulesのボリュームをコンテナ内に保持
     networks:
       - default
-      - iruyan-front_default
-volumes:
-  node_modules:
-networks:
-  iruyan-front_default:
-    external: true
+    command: yarn dev  # 開発モードでの起動コマンド
