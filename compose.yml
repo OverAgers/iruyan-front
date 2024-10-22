@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "12000:3000"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    command: sh -c "yarn dev"
+    networks:
+      - default
+      - iruyan-front_default
+volumes:
+  node_modules:
+networks:
+  iruyan-front_default:
+    external: true
